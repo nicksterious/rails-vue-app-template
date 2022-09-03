@@ -1,6 +1,6 @@
 <script>
     import axios from 'axios'
-    
+    import randomImage from '../random_image'
     export default {
 	props: ['movie_id'],
 	data(){
@@ -18,6 +18,11 @@
 		    .then( response => { this.movie = response.data })
 	    }
 	},
+	computed: {
+	    image(){
+		return randomImage(300, 450)
+	    }
+	},
 	watch: {
 	    movie_id(){
 		this.loadMovie()
@@ -29,7 +34,9 @@
 <template>
     <div class="row mb-2" v-if="movie">
 	<div class="col-md-6">
-	    <img v-bind:src="movie.movie.poster_url" class="w-100 m-2">
+	    <object :data="movie.movie.poster_url" type="image/png" class="w-100 m-2">
+		<img :src="image" class="w-100 m-2">
+	    </object>
 	</div>
 	<div class="col-md-6">
 	    <h1>{{ movie.movie.title }}</h1>

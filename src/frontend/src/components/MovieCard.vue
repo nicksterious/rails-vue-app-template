@@ -1,21 +1,10 @@
 <script>
+    import randomImage from '../random_image'
     export default {
 	props: ['movie'],
-	data(){
-	    return {
-	        placeholders: [
-		    "https://www.fillmurray.com/300/450",
-		    "https://baconmockup.com/300/450",
-		    "http://placebeard.it/300/450",
-		    "https://loremflickr.com/300/450",
-		    "https://www.placecage.com/300/450",
-		    "http://placeimg.com/300/450/any"
-		]
-	    }
-	},
 	computed: {
-	    randomImage() {
-	        return this.placeholders[Math.floor(Math.random()*this.placeholders.length)];
+	    image(){
+		return randomImage(300, 450)
 	    }
 	}
     }
@@ -23,8 +12,8 @@
 
 <template>
     <div class="card">
-	<object class="card-img-top" v-bind:data="movie.poster_url" type="image/png">
-	    <img class="card-img-top" v-bind:src="randomImage" />
+	<object class="card-img-top" :data="movie.poster_url" type="image/png">
+	    <img class="card-img-top" :src="image" />
 	</object>
 	<div class="card-body text-center">
 	    <h5>{{ movie.title }}</h5>

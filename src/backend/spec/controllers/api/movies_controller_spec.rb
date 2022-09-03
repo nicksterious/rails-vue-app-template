@@ -7,6 +7,11 @@ RSpec.describe Api::MoviesController, :type => :controller do
 	    get :index, params: { format: :json }
 	    expect(assigns[:movies].size).to eq 3
 	end
+	it "list multiple ids" do
+	    create_list :movie, 15
+	    get :index, params: { id: Movie.all.order(id: :asc).limit(4).pluck(:id), format: :json }
+	    expect(assigns[:movies].size).to eq 4
+	end
 	it "by actor"
 	it "by year"
 	it "by genre" do
