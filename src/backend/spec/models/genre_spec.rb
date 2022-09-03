@@ -5,6 +5,7 @@ RSpec.describe Genre, type: :model do
     describe "behavior"
 
     describe "relations" do
+	it { should have_many :actors }
 	it { should have_and_belong_to_many(:movies) }
     end
 

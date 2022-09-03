@@ -11,6 +11,7 @@ RSpec.describe Actor, type: :model do
     end
 
     describe "relations" do
+	it { should have_many :genres }
 	it { should have_and_belong_to_many(:movies) }
     end
 
