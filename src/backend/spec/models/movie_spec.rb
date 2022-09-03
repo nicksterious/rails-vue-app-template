@@ -14,6 +14,13 @@ RSpec.describe Movie, type: :model do
 	it { should validate_numericality_of(:year).is_greater_than(1850).is_less_than_or_equal_to(Time.now.strftime("%Y").to_i) }
 	it { should validate_numericality_of(:rating) }
 	# ... and so on
+
+	describe "factory" do
+	    it "generates record" do
+		movie = build :movie
+		expect(movie).to be_valid
+	    end
+	end
     end
 
 end

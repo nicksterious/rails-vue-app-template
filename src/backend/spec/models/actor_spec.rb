@@ -4,7 +4,7 @@ RSpec.describe Actor, type: :model do
 
     describe "behavior" do
 	it "sets default ID if none specified" do
-	    actor = Actor.new(first_name: "Mark", last_name: "Wahlberg")
+	    actor = build :actor # Actor.new(first_name: "Mark", last_name: "Wahlberg")
 	    expect(actor).to be_valid
 	    expect(actor.id).to_not eq nil
 	end

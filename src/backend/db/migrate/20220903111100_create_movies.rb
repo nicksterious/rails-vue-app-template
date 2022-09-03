@@ -9,7 +9,6 @@ class CreateMovies < ActiveRecord::Migration[6.1]
       t.float :rating
       t.string :page_url
 
-      t.timestamps
     end
   end
 end
