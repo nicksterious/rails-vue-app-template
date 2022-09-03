@@ -43,4 +43,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'searchkick'
 gem 'elasticsearch'
 
+gem 'connection_pool'
 gem 'dalli'
