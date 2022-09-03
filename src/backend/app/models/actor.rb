@@ -8,6 +8,8 @@ class Actor < ApplicationRecord
     
     has_and_belongs_to_many :movies
 
+    has_many :genres, through: :movies
+
     def set_id_if_missing
 	self.id ||= SecureRandom.uuid
     end
