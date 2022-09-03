@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+    searchkick
+
     validates_presence_of :title, allow_blank: false
     validates :year, numericality: { only_integer: true, greater_than: 1850, less_than_or_equal_to: Time.now.strftime("%Y").to_i }
     validates :runtime, numericality: { greater_than: 0 }

@@ -1,4 +1,6 @@
 class Actor < ApplicationRecord
+    searchkick
+
     before_validation :set_id_if_missing
 
     validates_presence_of :first_name, allow_blank: false

@@ -8,10 +8,17 @@ class ApiService
 	end
     end
 
+    def reindex
+	[ Actor, Genre, Director, Movie ].each do |model|
+	    model.send(:reindex)
+	end
+    end
+
     def process
 	fetch.each do |record|
 	    build record
 	end
+	reindex
     end
 
 end
