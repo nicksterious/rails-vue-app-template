@@ -23,16 +23,16 @@ class MovieBuilder
 
     def add_director(name)
 	first, last = name.split(" ")[0..1]
-	@movie.directors << Director.find_or_create_by(first_name: first, last_name: last)
+	@movie.directors << Director.find_or_create_by(first_name: first, last_name: last) rescue ActiveRecord::RecordInvalid
     end
 
 
     def add_actor(args)
-	@movie.actors << Actor.find_or_create_by(args)
+	@movie.actors << Actor.find_or_create_by(args) rescue ActiveRecord::RecordInvalid
     end
 
 
     def add_genre(name)
-	@movie.genres << Genre.first_or_create(name: name)
+	@movie.genres << Genre.find_or_create_by(name: name)
     end
 end
