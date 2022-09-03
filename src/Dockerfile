@@ -21,4 +21,5 @@ COPY --from=febuilder /app/dist /app/public
 
 # run the server
 CMD bundle exec rake db:setup \
+    && rake data:setup \
     && rails s -b 0.0.0.0 -p 80
