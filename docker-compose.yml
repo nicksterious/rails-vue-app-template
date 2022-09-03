@@ -46,6 +46,15 @@ services:
     tty: true
 
 
+  memcached:
+    image: memcached:1.6-alpine
+    container_name: memcached
+    hostname: memcached
+    restart: "always"
+    networks:
+     - backend
+
+
   mariadb:
     image: mariadb
     container_name: mariadb
