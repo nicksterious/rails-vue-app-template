@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_09_03_113318) do
 
-  create_table "actors", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
+  create_table "actors", id: { type: :string, limit: 128 }, charset: "utf8mb4", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
   end
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.bigint "movie_id"
     t.string "actor_id"
     t.index ["actor_id"], name: "index_actors_movies_on_actor_id"
+    t.index ["movie_id", "actor_id"], name: "movies_actors_unique_index", unique: true
     t.index ["movie_id"], name: "index_actors_movies_on_movie_id"
   end
 
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.bigint "movie_id"
     t.bigint "director_id"
     t.index ["director_id"], name: "index_directors_movies_on_director_id"
+    t.index ["movie_id", "director_id"], name: "directors_movies_unique_index", unique: true
     t.index ["movie_id"], name: "index_directors_movies_on_movie_id"
   end
 
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.bigint "movie_id"
     t.bigint "genre_id"
     t.index ["genre_id"], name: "index_genres_movies_on_genre_id"
+    t.index ["movie_id", "genre_id"], name: "movies_genres_unique_index", unique: true
     t.index ["movie_id"], name: "index_genres_movies_on_movie_id"
   end
 
@@ -55,8 +58,6 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.string "poster_url"
     t.float "rating"
     t.string "page_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
