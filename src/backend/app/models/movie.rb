@@ -7,6 +7,8 @@ class Movie < ApplicationRecord
     validates :rating, numericality: { greater_than: 0, less_than_or_equal_to: 10 }
     validates_presence_of :page_url, allow_blank: false
 
+    # can't validate uniqueness based on anything really
+
     has_and_belongs_to_many :actors
     has_and_belongs_to_many :genres
     has_and_belongs_to_many :directors

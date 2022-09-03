@@ -4,7 +4,17 @@ RSpec.describe Movie, type: :model do
 
     describe "behavior"
 
-    describe "relations"
+    describe "relations" do
+	describe "actors" do
+	    it "cannot register association twice" do
+		movie = create :movie
+		actor = create :actor
+		movie.actors << actor
+		expect(movie.actors.count).to eq 1
+		expect { movie.actors << actor }.to raise_exception
+	    end
+	end
+    end
 
     describe "validations" do
 	it { should validate_presence_of :title }
