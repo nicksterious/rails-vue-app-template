@@ -1,6 +1,6 @@
 namespace :data do
     desc "Clear Actor and Movie data"
-    task :clear => environment do
+    task :clear => :environment do
 	Actor.all.map &:destroy
 	Movie.all.map &:destroy
     end
