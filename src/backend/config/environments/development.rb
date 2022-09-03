@@ -63,7 +63,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  config.hosts << [
+  config.hosts = [
     "kinside.dev.flinkwise.com",
     IPAddr.new("0.0.0.0/0"),
     IPAddr.new("::/0"),
@@ -71,7 +71,7 @@ Rails.application.configure do
     "app",
     "webapp"
   ]
-    config.cache_store = :mem_cache_store, "memcached", { :namespace => ENV['RAILS_ENV'], :pool_size => 5, :expires_in => 1.day }
-    
+  config.cache_store = :mem_cache_store, "memcached", { :namespace => ENV['RAILS_ENV'], :pool_size => 5, :expires_in => 1.day }
+
 end
 
