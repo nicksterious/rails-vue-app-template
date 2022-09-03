@@ -1,0 +1,22 @@
+name: App Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/frontend/src/**'
+      - 'src/backend/app/**'
+
+jobs:
+  Tests:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Run tests container
+      run: |
+        docker-compose run tests
+

@@ -1,0 +1,94 @@
+version: '3.7'
+
+services:
+  app: &app
+    build:
+      context: ./src
+    environment:
+      RAILS_ENV: "development"
+      PASSWORD: "${PASSWORD}"
+      ELASTICSEARCH_URL: "elasticsearch"
+    depends_on:
+      - mariadb
+      - elasticsearch
+      - docker_hoster
+    networks:
+      - backend
+
+  webapp:
+    <<: *app
+    container_name: webapp
+    hostname: webapp
+    ports:
+      - 0.0.0.0:80:80
+      - 3000:3000
+
+
+  tests:
+    <<: *app
+    container_name: tests
+    environment:
+      RAILS_ENV: "test"
+      PASSWORD: "${PASSWORD}"
+      ELASTICSEARCH_URL: "elasticsearch"
+    command: "bundle exec rake db:setup && bundle exec rspec"
+
+
+  guard:
+    <<: *app
+    container_name: guard
+    environment:
+      RAILS_ENV: "test"
+      TERM: "dumb"
+      PASSWORD: "${PASSWORD}"
+      ELASTICSEARCH_URL: "elasticsearch:9200"
+    command: "bundle exec rake db:setup && bundle exec guard"
+    tty: true
+
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    hostname: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: "${PASSWORD}"
+    networks:
+      - backend
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+    container_name: elasticsearch
+    hostname: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+      - http.cors.allow-origin=*
+      - http.cors.enabled=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9300:9300
+      - 9200:9200
+    networks:
+      - backend
+
+
+  docker_hoster:
+    image: dvdarias/docker-hoster
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /etc/hosts:/tmp/hosts
+
+
+networks:
+  backend:
+    driver: bridge
+    name: backend
+    ipam:
+      config:
+        - subnet: 192.168.69.0/24
