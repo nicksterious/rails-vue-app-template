@@ -67,7 +67,9 @@ Rails.application.configure do
     "kinside.dev.flinkwise.com",
     IPAddr.new("0.0.0.0/0"),
     IPAddr.new("::/0"),
-    "localhost"
+    "localhost",
+    "app",
+    "webapp"
   ]
     config.cache_store = :mem_cache_store, "memcached", { :namespace => ENV['RAILS_ENV'], :pool_size => 5, :expires_in => 1.day }
     
