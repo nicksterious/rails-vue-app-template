@@ -16,3 +16,5 @@ PASSWORD=whatever
 Then start the stack using:
 
 `docker-compose up webapp`
+
+Then visit `http://<your-host-name>` to get started
