@@ -1,8 +1,9 @@
 class Api::ActorsController < ApplicationController
   def index
-    render json: {} and return false
+    @actors = ActorQuery.new( Actor.all ).call(params)
   end
 
   def show
+    @actor = Actor.find(params[:id])
   end
 end
