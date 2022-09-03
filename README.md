@@ -28,7 +28,7 @@ Then visit `http://<your-host-name>` to get started
 * Including associated records with a large list of objects is not a good practice
 * Movies load and show their actors only when requested (viewing a movie page)
 * Actors load their movie history only when requested (viewing an actor's profile)
-
+* Data import should be done in a Sidekiq job that may be fired by a controller method
 
 ### TODO
 * Instead of Rails/MariaDB the application may be more feasible to develop using ArangoDB/Foxx or any graph database that exposes HTTP data endpoints
