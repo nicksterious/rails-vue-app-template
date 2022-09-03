@@ -30,7 +30,8 @@ group :test do
     gem 'guard-rspec'
     gem 'database_cleaner'
     gem 'rspec-repeat'
-    gem 'shoulda-matchers'
+    gem 'shoulda-matchers', '~> 5.0'
+    gem 'simplecov'
 end
 
 gem 'faraday'

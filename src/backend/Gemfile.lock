@@ -88,6 +88,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     elastic-transport (8.1.0)
       faraday (< 3)
       multi_json
@@ -227,6 +228,12 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     spring (4.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -267,7 +274,8 @@ DEPENDENCIES
   rspec-rails (~> 4.0)
   rspec-repeat
   searchkick
-  shoulda-matchers
+  shoulda-matchers (~> 5.0)
+  simplecov
   spring
   tzinfo-data
 
