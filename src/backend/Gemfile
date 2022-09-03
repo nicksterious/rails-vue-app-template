@@ -32,6 +32,7 @@ group :test do
     gem 'rspec-repeat'
     gem 'shoulda-matchers', '~> 5.0'
     gem 'simplecov'
+    gem 'rails-controller-testing'
 end
 
 gem 'faraday'
