@@ -11,7 +11,7 @@ RSpec.describe Movie, type: :model do
 		actor = create :actor
 		movie.actors << actor
 		expect(movie.actors.count).to eq 1
-		expect { movie.actors << actor }.to raise_exception
+		expect { movie.actors << actor }.to raise_exception(ActiveRecord::RecordNotUnique)
 	    end
 	end
     end
