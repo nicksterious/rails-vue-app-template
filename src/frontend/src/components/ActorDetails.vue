@@ -37,7 +37,7 @@
 	    <MovieCard :movie="movie" v-for="movie in actor.movies"></MovieCard>
 	</b-tab>
 	<b-tab title="Top 5 collaborators">
-	    TODO TODO
+	    TODO
 	</b-tab>
 	<b-tab title="Genres">
 	    TODO

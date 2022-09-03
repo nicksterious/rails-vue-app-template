@@ -47,6 +47,13 @@
 		    <div class="genres mt-2">
 			<span class="badge m-1 bg-primary" v-for="genre in movie.genres">{{ genre.name }}</span>
 		    </div>
+		    <div class="runtime mt-2">
+			<em>{{ movie.movie.runtime }}'</em>
+		    </div>
+		    <div class="directors mt-2">
+			<h5>Directed by</h5>
+			<span class="mr-1" v-for="director in movie.directors">{{ director.first_name }} {{ director.last_name }}</span>
+		    </div>
 		    <div class="plot mt-2">
 			{{ movie.movie.plot }}
 		    </div>

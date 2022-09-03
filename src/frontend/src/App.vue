@@ -2,6 +2,7 @@
 </script>
 
 <template>
+
     <div class="row main">
 	<div class="col-md-6">
 	    <MovieList/>
