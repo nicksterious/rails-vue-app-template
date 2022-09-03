@@ -91,13 +91,13 @@ GEM
     database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    elastic-transport (8.1.0)
-      faraday (< 3)
+    elasticsearch (7.4.0)
+      elasticsearch-api (= 7.4.0)
+      elasticsearch-transport (= 7.4.0)
+    elasticsearch-api (7.4.0)
       multi_json
-    elasticsearch (8.4.0)
-      elastic-transport (~> 8)
-      elasticsearch-api (= 8.4.0)
-    elasticsearch-api (8.4.0)
+    elasticsearch-transport (7.4.0)
+      faraday
       multi_json
     erubi (1.11.0)
     factory_bot (6.2.1)
