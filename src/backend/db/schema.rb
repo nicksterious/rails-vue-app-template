@@ -17,13 +17,34 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.string "last_name"
   end
 
+  create_table "actors_movies", id: false, charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.string "actor_id"
+    t.index ["actor_id"], name: "index_actors_movies_on_actor_id"
+    t.index ["movie_id"], name: "index_actors_movies_on_movie_id"
+  end
+
   create_table "directors", charset: "utf8mb4", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
   end
 
+  create_table "directors_movies", id: false, charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "director_id"
+    t.index ["director_id"], name: "index_directors_movies_on_director_id"
+    t.index ["movie_id"], name: "index_directors_movies_on_movie_id"
+  end
+
   create_table "genres", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "genres_movies", id: false, charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_genres_movies_on_genre_id"
+    t.index ["movie_id"], name: "index_genres_movies_on_movie_id"
   end
 
   create_table "movies", charset: "utf8mb4", force: :cascade do |t|
@@ -36,27 +57,6 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.string "page_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "movies_actors", id: false, charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.string "actor_id"
-    t.index ["actor_id"], name: "index_movies_actors_on_actor_id"
-    t.index ["movie_id"], name: "index_movies_actors_on_movie_id"
-  end
-
-  create_table "movies_directors", id: false, charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "director_id"
-    t.index ["director_id"], name: "index_movies_directors_on_director_id"
-    t.index ["movie_id"], name: "index_movies_directors_on_movie_id"
-  end
-
-  create_table "movies_genres", id: false, charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "genre_id"
-    t.index ["genre_id"], name: "index_movies_genres_on_genre_id"
-    t.index ["movie_id"], name: "index_movies_genres_on_movie_id"
   end
 
 end
