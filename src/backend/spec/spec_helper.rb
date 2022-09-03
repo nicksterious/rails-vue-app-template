@@ -4,6 +4,7 @@ require 'factory_bot_rails'
 require "shoulda/matchers"
 require 'rake'
 require "rspec/repeat"
+require "rails-controller-testing"
 require 'rails_helper'
 Rails.application.load_tasks
 
@@ -18,11 +19,16 @@ RSpec.configure do |config|
 
     config.before(:suite) do
         DatabaseCleaner.strategy = :truncation
-        DatabaseCleaner.clean
-        # create some default data
+        # create some default data?
 	Rake::Task['db:seed'].invoke
         Rake::Task['db:seed'].reenable
     end # before suite
+    
+    config.around(:each) do |example|
+        DatabaseCleaner.cleaning do
+    	    example.run
+	end
+    end
 
 
   config.expect_with :rspec do |expectations|
