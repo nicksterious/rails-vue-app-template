@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_03_110051) do
+ActiveRecord::Schema.define(version: 2022_09_03_111100) do
 
   create_table "actors", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
     t.string "first_name"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2022_09_03_110051) do
 
   create_table "genres", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "movies", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.integer "runtime"
+    t.text "plot"
+    t.string "poster_url"
+    t.float "rating"
+    t.string "page_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
