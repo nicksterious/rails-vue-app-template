@@ -32,7 +32,7 @@ services:
       RAILS_ENV: "test"
       PASSWORD: "${PASSWORD}"
       ELASTICSEARCH_URL: "elasticsearch"
-    command: "bundle exec rake db:setup && bundle exec rspec"
+    command: /bin/bash -l -c "bundle exec rake db:setup && bundle exec rspec"
 
 
   guard:
@@ -43,7 +43,7 @@ services:
       TERM: "dumb"
       PASSWORD: "${PASSWORD}"
       ELASTICSEARCH_URL: "elasticsearch:9200"
-    command: "bundle exec rake db:setup && bundle exec guard"
+    command: /bin/bash -l -c "bundle exec rake db:setup && bundle exec guard"
     tty: true
 
 
