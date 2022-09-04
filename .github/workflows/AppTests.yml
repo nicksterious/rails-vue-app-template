@@ -17,11 +17,10 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Run tests container
+      env:
+        PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        echo "PASSWORD=$PASSWORD" > .env
         docker-compose up -d mariadb redis elasticsearch
-        sleep 15
-        docker ps
-        docker logs mariadb
+        sleep 5
         docker-compose run tests
 
