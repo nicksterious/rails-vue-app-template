@@ -23,6 +23,11 @@
 	    image(){
 		return randomImage(200,200)
 	    }
+	},
+	watch: {
+	    actor_id(){
+		this.loadActor()
+	    }
 	}
     }
 </script>
