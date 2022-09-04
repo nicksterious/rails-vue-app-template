@@ -18,6 +18,7 @@ jobs:
 
     - name: Run tests container
       run: |
+        echo $PASSWORD
         docker-compose up -d mariadb redis elasticsearch
         sleep 15
         docker ps
