@@ -37,7 +37,7 @@
 	    <MovieCard :movie="movie" v-for="movie in actor.movies"></MovieCard>
 	</b-tab>
 	<b-tab title="Top 5 collaborators">
-	    TODO
+	    <ActorCard :actor="a" v-for="a in actor.co_actors"></ActorCard>
 	</b-tab>
 	<b-tab title="Genres">
 	    TODO
@@ -47,7 +47,7 @@
 
 <style scoped>
     .card {
-	width:100px;
+	width:200px;
 	display: inline-block;
 	margin:1%;
     }
