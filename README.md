@@ -38,7 +38,11 @@ Then visit `http://<your-host-name>` to browse.
 
 ### TODO
 * Instead of Rails/MariaDB the application may be more feasible to develop using ArangoDB/Foxx or any graph database that exposes HTTP data endpoints
-* Actors' top 5 co-actors
-* Pagination on movies index
+* Searches by director and genre
+* Pagination on movies index component
 * Improve coverage
+
+
+### Known issues
 * Using placeholders to replace missing images comes with a bug that prevents movie detail view poster from updating during navigation
+* trying to navigate to a co-worker's profile doesn't work for some reason related to routing
