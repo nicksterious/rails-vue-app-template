@@ -47,4 +47,4 @@ Then visit `http://<your-host-name>` to browse.
 ### Known issues
 * Using placeholders to replace missing images (IMDB's API throttles traffic) comes with an issue that prevents movie detail view poster from updating during navigation in certain situations
 * trying to navigate to a co-worker's profile doesn't work for some reason related to routing
-* there's a routing issue that causes a 404 when refreshing the page while on an actor or movie detail page, can be fixed by adjusting the URL patterns for the router
+* there's a routing issue that causes the actor/movie detail pages not to load when entering the website straight on a component's route or when using back/forward browser buttons, probably fixable through a routing fallback

@@ -6,18 +6,18 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-	path: '/',
+	path: '/#/',
 	name: 'welcome',
 	component: () => import('@/components/Welcome.vue')
     },
     {
-	path: '/movie/:movie_id',
+	path: '/#/movie/:movie_id',
 	name: 'movie',
 	component: () => import('@/components/MovieDetails.vue'),
 	props: true
     },
     {
-	path: '/actor/:actor_id',
+	path: '/#/actor/:actor_id',
 	name: 'actor',
 	component: () => import('@/components/ActorDetails.vue'),
 	props: true

@@ -1,4 +1,5 @@
 <script setup>
+    // TODO see if we've hit an actor/movie page and load them up
 </script>
 
 <template>
