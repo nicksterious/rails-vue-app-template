@@ -18,7 +18,7 @@ RSpec.configure do |config|
 
 
     config.before(:suite) do
-        DatabaseCleaner.strategy = :truncation
+        DatabaseCleaner.strategy = [ :truncation, only: %w[ actors movies directors genres actors_movies directors_movies genres_movies] ]
         # create some default data?
 	Rake::Task['db:seed'].invoke
         Rake::Task['db:seed'].reenable
