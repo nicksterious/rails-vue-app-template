@@ -13,4 +13,14 @@ class Actor < ApplicationRecord
     def set_id_if_missing
 	self.id ||= SecureRandom.uuid
     end
+    
+    def co_actors
+	Actor
+	    .joins(:movies)
+	    .where( movies: { id: movies.pluck(:id) } )
+	    .select("actors.*", "count(movies.id) as movie_count")
+	    .group("actors.id")
+	    .order("movie_count desc")
+	    .limit(5)
+    end
 end
