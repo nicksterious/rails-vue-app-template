@@ -32,7 +32,7 @@ Then visit `http://<your-host-name>` to browse.
 * Including associated records with a large list of objects is not a good practice (eg for each movies list all actors), I'm not doing it
 * Instead, movies load and show their actors only when viewing a movie's details
 * Actors load their movie history only when viewing an actor's profile
-* There's a request that data import should be done in a Sidekiq job that may be fired by a controller method, I've added sidekiq, the container, configurations, a controller to trigger the action but not adding at this time the UI feature to trigger the import.
+* There's a request that data import should fire from the frontend. A way of doing this is in a Sidekiq job that may be fired by a controller method, I've added sidekiq, the container, configurations, a controller to trigger the action but not adding at this time the UI feature to trigger the import.
 
 
 
@@ -45,5 +45,6 @@ Then visit `http://<your-host-name>` to browse.
 
 
 ### Known issues
-* Using placeholders to replace missing images comes with a bug that prevents movie detail view poster from updating during navigation
+* Using placeholders to replace missing images (IMDB's API throttles traffic) comes with an issue that prevents movie detail view poster from updating during navigation in certain situations
 * trying to navigate to a co-worker's profile doesn't work for some reason related to routing
+* there's a routing issue that causes a 404 when refreshing the page while on an actor or movie detail page, can be fixed by adjusting the URL patterns for the router
