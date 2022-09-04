@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 	get "#{route}(.:format)", controller: route, action: :index
 	get "#{route}/:id(.:format)", controller: route, action: :show 
     end
+    get "import/start", controller: :import, action: :start
   end
 end
