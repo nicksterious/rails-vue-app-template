@@ -9,6 +9,7 @@ import MovieCard from '@/components/MovieCard.vue'
 import MovieList from '@/components/MovieList.vue'
 import ActorCard from '@/components/ActorCard.vue'
 import ActorDetails from '@/components/ActorDetails.vue'
+import Search from '@/components/Search.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
@@ -26,5 +27,5 @@ app.component('MovieCard', MovieCard)
 app.component('MovieList', MovieList)
 app.component('ActorCard', ActorCard)
 app.component('ActorDetails', ActorDetails)
-
+app.component('Search', Search)
 app.mount('#app')
