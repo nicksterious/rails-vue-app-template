@@ -9,7 +9,8 @@
 	},
 	methods:{
             search(){
-                if (this.search_string.length > 3) {
+              if (this.search_string.length > 3) {
+            	this.search_results = [];
                 const query = {
                     query: {
                         query_string: {
@@ -38,12 +39,17 @@
                             console.log(err)
                         }
                     })
-                }
+              }
             },
             clearSearch(){
                 this.search_results = []
                 this.search_string = ""
             }
+	},
+	watch: {
+	    search_string(){
+		this.search()
+	    }
 	}
     }
 </script>
@@ -53,7 +59,7 @@
     <b-input-group class="m-2">
         <b-form-input type="text" v-model="search_string" placeholder="Search movie or actor..."></b-form-input>
         <b-input-group-append v-if="search_string != ''">
-            <b-button variant="success" @click="search" @keydown.native="search">Search</b-button>
+            <b-button variant="success" @click="search" debounce="500">Search</b-button>
         </b-input-group-append>
         <b-input-group-append v-if="search_string != ''">
             <b-button variant="outline-secondary" @click="clearSearch">X</b-button>
