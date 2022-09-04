@@ -13,6 +13,7 @@ services:
       - elasticsearch
       - docker_hoster
       - memcached
+      - sidekiq
     networks:
       - backend
 
@@ -23,6 +24,15 @@ services:
     ports:
       - 0.0.0.0:80:80
       - 3000:3000
+
+
+  sidekiq:
+    <<: *app
+    container_name: sidekiq
+    hostname: sidekiq
+    depends_on:
+      - redis
+    command: /bin/bash -l -c "sleep 30 && bundle exec sidekiq -C config/sidekiq.yml"
 
 
   tests:
@@ -86,6 +96,15 @@ services:
     ports:
       - 9300:9300
       - 9200:9200
+    networks:
+      - backend
+
+
+  redis:
+    image: redis:5.0-alpine
+    container_name: redis
+    hostname: redis
+    restart: "always"
     networks:
       - backend
 

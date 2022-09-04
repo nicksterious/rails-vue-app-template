@@ -46,3 +46,5 @@ gem 'elasticsearch'
 
 gem 'connection_pool'
 gem 'dalli'
+
+gem 'sidekiq'
