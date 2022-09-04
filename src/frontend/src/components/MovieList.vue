@@ -14,6 +14,7 @@
 	},
 	methods: {
 	    search(){
+		if (this.search_string.length > 3) {
 		const query = {
 		    query: {
 			query_string: {
@@ -30,16 +31,19 @@
 		    })
 		    .then(response => { 
 			try {
-			    this.search_results = response.data.hits.hits.map( res => { return {
-				    id: res._id,
-				    title: res._source.title
-				}
-			    })
+			    this.search_results = this.search_results.concat( 
+				response.data.hits.hits.map( res => { return {
+					id: res._id,
+					title: res._source.title
+				    }
+				})
+			    )
 			} catch(err) {
-			    // error or nothing found
+			    // TODO handle error or no movies found
 			    console.log(err)
 			}
 		    })
+		}
 	    },
 	    clearSearch(){
 		this.search_results = []
@@ -59,10 +63,10 @@
     <b-input-group class="m-2">
         <b-form-input type="text" v-model="search_string" placeholder="Search movie or actor..."></b-form-input>
         <b-input-group-append v-if="search_string != ''">
-    	    <b-button variant="success" @click="search">Search</b-button>
+    	    <b-button variant="success" @click="search" @keydown.native="search">Search</b-button>
         </b-input-group-append>
         <b-input-group-append v-if="search_string != ''">
-    	    <b-button variant="outline-secondary" @click="clearSearch">Clear</b-button>
+    	    <b-button variant="outline-secondary" @click="clearSearch">X</b-button>
         </b-input-group-append>
     </b-input-group>
     
