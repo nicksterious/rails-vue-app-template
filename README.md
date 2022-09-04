@@ -37,6 +37,7 @@ Then visit `http://<your-host-name>` to browse.
 
 
 ### TODO
+* figure out a better UI layout and mobile-friendly navigation between app sections
 * Instead of Rails/MariaDB the application may be more feasible to develop using ArangoDB/Foxx or any graph database that exposes HTTP data endpoints
 * Searches by director and genre
 * Pagination on movies index component
