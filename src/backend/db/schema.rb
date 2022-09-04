@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_03_113318) do
+ActiveRecord::Schema.define(version: 2022_09_04_064312) do
 
   create_table "actors", id: { type: :string, limit: 128 }, charset: "utf8mb4", force: :cascade do |t|
     t.string "first_name"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2022_09_03_113318) do
     t.string "poster_url"
     t.float "rating"
     t.string "page_url"
+  end
+
+  create_table "search_views", charset: "utf8mb4", force: :cascade do |t|
   end
 
 end
