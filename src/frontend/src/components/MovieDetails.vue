@@ -32,11 +32,12 @@
 </script>
 
 <template>
-    <div class="row mb-2" v-if="movie">
+    <div id="movie-details" class="row mb-2" v-if="movie">
 	<div class="col-md-6">
 	    <object :data="movie.movie.poster_url" type="image/png" class="w-100 m-2">
 		<img :src="image" class="w-100 m-2">
 	    </object>
+	    <a name="MovieDetails"></a>
 	</div>
 	<div class="col-md-6">
 	    <h1>{{ movie.movie.title }}</h1>

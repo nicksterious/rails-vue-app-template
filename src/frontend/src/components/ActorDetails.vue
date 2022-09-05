@@ -33,19 +33,21 @@
 </script>
 
 <template>
-    <img :src="image" />
-    <h1>{{ actor.actor.first_name }} {{ actor.actor.last_name }}</h1>
-    <b-tabs content-class="m-3" v-if="actor">
-	<b-tab title="Movies">
-	    <MovieCard :movie="movie" v-for="movie in actor.movies"></MovieCard>
-	</b-tab>
-	<b-tab title="Top 5 collaborators">
-	    <ActorCard :actor="a" v-for="a in actor.co_actors"></ActorCard>
-	</b-tab>
-	<b-tab title="Genres">
-	    TODO show this actor's usual movie genres, clicking genres could filter the movies at the left based on genre
-	</b-tab>
-    </b-tabs>
+    <div id="actor-details" v-if="actor">
+	<img :src="image" />
+	<h1>{{ actor.actor.first_name }} {{ actor.actor.last_name }}</h1>
+	<b-tabs content-class="m-3" v-if="actor">
+	    <b-tab title="Movies">
+		<MovieCard :movie="movie" v-for="movie in actor.movies"></MovieCard>
+	    </b-tab>
+	    <b-tab title="Top 5 collaborators">
+		<ActorCard :actor="a" v-for="a in actor.co_actors"></ActorCard>
+	    </b-tab>
+	    <b-tab title="Genres">
+		TODO show this actor's usual movie genres, clicking genres could filter the movies at the left based on genre
+	    </b-tab>
+	</b-tabs>
+    </div>
 </template>
 
 <style scoped>

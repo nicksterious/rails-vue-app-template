@@ -35,4 +35,9 @@
 	max-width:300px;
 	position: relative;
     }
+    @media only screen and (max-width:1024px) {
+	.card {
+	    max-width:48%;
+	}
+    }
 </style>

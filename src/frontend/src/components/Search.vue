@@ -83,7 +83,7 @@
 </script>
 
 <template>
-    <div class="search-form">
+    <div class="search-form bg-primary p-1 rounded m-1">
     <b-input-group class="m-2">
         <b-form-input type="text" v-model="search_string" placeholder="Search movie or actor..."></b-form-input>
         <b-input-group-append v-if="search_string != ''">
@@ -98,13 +98,13 @@
 	<div class="col-6" v-if="movieResults.length > 0">
 	    <h5>Movies</h5>
     	    <div class="search-result" v-for="result in movieResults">
-    		<RouterLink :to="{ name: 'movie', params: { movie_id: result.movie_id }}">{{ result.title }} <small class="text-muted">{{ result.year }}</small></RouterLink>
+    		<RouterLink :to="{ name: 'movie', params: { movie_id: result.movie_id } }">{{ result.title }} <small class="text-muted">{{ result.year }}</small></RouterLink>
     	    </div>
 	</div>
 	<div class="col-6" v-if="actorResults.length > 0">
 	    <h5>Actors</h5>
     	    <div class="search-result" v-for="result in actorResults">
-        	<RouterLink :to="{ name: 'actor', params: { actor_id: result.actor_id }}">{{ result.first_name }} {{ result.last_name}} <small class="text-muted">actor</small></RouterLink>
+        	<RouterLink :to="{ name: 'actor', params: { actor_id: result.actor_id } }">{{ result.first_name }} {{ result.last_name}} <small class="text-muted">actor</small></RouterLink>
     	    </div>
 	</div>
 	<!-- TODO add directors pages or filter movie list by director using query object -->
@@ -117,5 +117,8 @@
 <style scoped>
     .search-result a {
 	text-decoration: none;
+    }
+    .input-group {
+	width:98%;
     }
 </style>

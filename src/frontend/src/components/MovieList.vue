@@ -34,4 +34,9 @@
     input:focus::placeholder {
 	color: transparent;
     }
+    @media only screen and (max-width:1024px) {
+	div.card-deck {
+	    max-height: 50vh;
+	}
+    }
 </style>
