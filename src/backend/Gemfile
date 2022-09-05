@@ -30,7 +30,9 @@ group :test do
     gem 'guard-rspec'
     gem 'database_cleaner'
     gem 'rspec-repeat'
-    gem 'shoulda-matchers'
+    gem 'shoulda-matchers', '~> 5.0'
+    gem 'simplecov'
+    gem 'rails-controller-testing'
 end
 
 gem 'faraday'
@@ -41,3 +43,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'searchkick'
 gem 'elasticsearch'
+
+gem 'connection_pool'
+gem 'dalli'
+
+gem 'sidekiq'
